@@ -14,21 +14,37 @@ const NavBar = () => {
   //
   // Destructure the object returned by the useContext hook for easy access
   // to the data we added to the context with familiar names.
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  
+  const handleSignOut = () => {
+    // Clear the token from localStorage
+    localStorage.removeItem('token');
+    // Clear the user state
+    setUser(null);
+  };
+
+  // src/components/NavBar/NavBar.jsx
 
   return (
     <nav>
       {user ? (
         <ul>
           <li>Welcome, {user.username}</li>
+          {/* The new link */}
+          <li><Link to='/'>Dashboard</Link></li>
+          <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
         </ul>
       ) : (
         <ul>
+          {/* Another new link */}
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/sign-in'>Sign In</Link></li>
           <li><Link to='/sign-up'>Sign Up</Link></li>
         </ul>
       )}
     </nav>
   );
+
 };
 
 export default NavBar;
