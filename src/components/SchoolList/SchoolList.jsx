@@ -8,7 +8,7 @@ const SchoolList = (props) => {
     return (
         <main>
           {props.schools.map((school) => (
-            <Link key={school._id} to={`/school/${school._id}`}>
+            <Link key={school._id} to={`/schools/${school._id}`}>
               <article>
                 <header>
                     <h2>{school.name}</h2>

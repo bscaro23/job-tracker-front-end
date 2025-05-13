@@ -39,7 +39,7 @@ const App = () => {
   };
 
   const handleDeleteSchool = async (schoolId) => {
-    const deletedSchool = await schoolService.deleteHoot(schoolId);
+    const deletedSchool = await schoolService.deleteSchool(schoolId);
     setSchools(schools.filter((school) => school._id !== deletedSchool._id));
     navigate('/schools');
   };
@@ -61,7 +61,7 @@ const App = () => {
           <>
             {/* Protected routes (available only to signed-in users) */}
             <Route path='/schools' element={<SchoolList schools={schools} />} />
-            <Route path='schools/:schoolId' elemet={ <SchoolDetails handleDeleteSchool={handleDeleteSchool}/> }/>
+            <Route path='/schools/:schoolId' element={ <SchoolDetails handleDeleteSchool={handleDeleteSchool}/> }/>
             <Route path='/schools/new' element={ <SchoolForm handleAddSchool={handleAddSchool} /> } />
             <Route path='/schools/:schoolId/edit' element={<SchoolForm handleUpdateSchool={handleUpdateSchool} />} />
           </>
@@ -78,4 +78,6 @@ const App = () => {
 };
 
 export default App;
+
+//Todo add the job CRUD functionality next on back end and front end
 
