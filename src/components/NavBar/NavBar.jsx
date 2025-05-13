@@ -33,6 +33,7 @@ const NavBar = () => {
           {/* The new link */}
           <li><Link to='/'>Dashboard</Link></li>
           <li><Link to='/schools'>SCHOOLS</Link></li>
+          <li><Link to='/schools/new'>NEW SCHOOL</Link></li>
           <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
         </ul>
       ) : (
