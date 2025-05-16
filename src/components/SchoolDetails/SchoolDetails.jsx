@@ -12,20 +12,23 @@ const SchoolDetails = ({handleDeleteSchool}) => {
     const { schoolId } = useParams();
     const { user } = useContext(UserContext);
     const [school, setSchool] = useState(null);
+  
 
     useEffect(() => {
-        const fetchHoot = async () => {
+        const fetchSchool = async () => {
           const schoolData = await schoolService.show(schoolId);
           setSchool(schoolData);
         };
-        fetchHoot();
+        fetchSchool();
       }, [schoolId]);
 
       if (!school) return <main>Loading...</main>;
     
       const handleAddJob = async (jobFormData) => {
+      
         const newJob = await schoolService.createJob(schoolId, jobFormData);
-        setSchool({ ...school, jobs: [...school.jobs, newJob] });
+        
+        setSchool({ ...school, currentJobs: [...school.currentJobs, newJob._id] });
       };
 
       return (

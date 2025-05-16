@@ -12,17 +12,12 @@ const JobForm = ({ handleAddJob }) => {
   });
 
   const handleChange = (evt) => {
-    const { name, type, value, checked } = evt.target;
-    setFormData({ 
-      ...formData, 
-      [name]: type === 'checkbox' ? checked : value 
-    });
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleAddJob(formData);
-    setFormData({ text: '' });
   };
 
   return (

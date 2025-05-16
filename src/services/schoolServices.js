@@ -43,6 +43,7 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/schools`;
 
   const createJob = async (schoolId, jobFormData) => {
     try {
+      console.log(jobFormData)
       const res = await fetch(`${BASE_URL}/${schoolId}/jobs`, {
         method: 'POST',
         headers: {
